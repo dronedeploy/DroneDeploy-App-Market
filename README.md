@@ -1,5 +1,5 @@
 Getting Started
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xieC4o5JEUs" frameborder="0" allowfullscreen></iframe>
+[![Getting Started](https://img.youtube.com/vi/xieC4o5JEUs/0.jpg)](https://www.youtube.com/watch?v=xieC4o5JEUs)
 
 Docs
 https://dronedeploy.gitbooks.io/dronedeploy-apps/content/
