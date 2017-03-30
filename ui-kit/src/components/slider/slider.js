@@ -303,7 +303,7 @@
         }
         </style>
         <div class="rkmd-slider slider-continuous slider-shadow slider-lightBlue">
-          <input type="range" min="0" max="100" value="50">
+          <input type="range" min="${this.getAttribute('min') || 0}" max="${this.getAttribute('max') || 100}" value="${this.getAttribute('value') || 50}">
         </div>
       `
     }
