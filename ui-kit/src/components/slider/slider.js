@@ -60,7 +60,7 @@
         .rkmd-slider input[type="range"] + .slider .slider-handle {
           cursor: pointer;
           position: absolute;
-          top: -5.5px;
+          top: -7px;
           left: 0%;
           width: 15px;
           height: 15px;
