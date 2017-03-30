@@ -309,11 +309,11 @@
     }
 
     sliderPrototype.attachedCallback = function() {
-      createRangeSlider(this.shadowRoot.querySelector('.rkmd-slider'));
+      createRangeSlider(this, this.shadowRoot.querySelector('.rkmd-slider'));
     }
 
-    function createRangeSlider(node) {
-      var curnt, range, slider, node;
+    function createRangeSlider(dispatchNode, node) {
+      var curnt, range, slider;
       var qs = node.querySelector.bind(node);
       var {width: slider_width, left: slider_offset } = node.getBoundingClientRect();
 
@@ -324,6 +324,7 @@
         slider_handle = qs('.slider-handle');
         slider_fill.style.width = range.value +'%';
         slider_handle.style.left = range.value +'%';
+        dispatchNode.value = range.value;
       }
 
       qs('.slider-handle').addEventListener('mousedown', function(e) {
@@ -336,7 +337,7 @@
           var slider_new_width = e.pageX - slider_offset;
 
           if(slider_new_width <= slider_width && !(slider_new_width < '0')) {
-            slider_move(node, slider_new_width, slider_width);
+            slider_move(dispatchNode, node, slider_new_width, slider_width);
           }
         }
 
@@ -355,7 +356,7 @@
 
         var slider_new_width = e.pageX - slider_offset;
         if(slider_new_width <= slider_width && !(slider_new_width < '0')) {
-          slider_move(node, slider_new_width, slider_width);
+          slider_move(dispatchNode, node, slider_new_width, slider_width);
         }
       });
     };
@@ -375,17 +376,19 @@
       return tmplt;
     }
 
-    function slider_move(parent, newW, sliderW) {
+    function slider_move(dispatchNode, node, newW, sliderW) {
       var slider_new_val = parseInt(Math.round(newW / sliderW * 100));
-      var slider_fill    = parent.querySelector('.slider-fill');
-      var slider_handle  = parent.querySelector('.slider-handle');
-      var range          = parent.querySelector('input[type="range"]');
+      var slider_fill    = node.querySelector('.slider-fill');
+      var slider_handle  = node.querySelector('.slider-handle');
+      var range          = node.querySelector('input[type="range"]');
       slider_fill.style.width = slider_new_val +'%';
       slider_handle.style.left = slider_new_val +'%';
       slider_handle.style.transition = 'none';
       slider_handle.style.webkitTransition = 'none';
       slider_handle.style.mozTransition = 'none';
       range.value = slider_new_val;
+      dispatchNode.dispatchEvent(new CustomEvent('change'))
+      dispatchNode.value = slider_new_val;
     }
 
     document.registerElement('dd-slider', { prototype: sliderPrototype })
