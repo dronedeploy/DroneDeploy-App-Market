@@ -313,7 +313,7 @@
     }
 
     function createRangeSlider(dispatchNode, node) {
-      var curnt, range, slider;
+      var curnt, range, slider, slider_fill, slider_handle;
       var qs = node.querySelector.bind(node);
       var {width: slider_width, left: slider_offset } = node.getBoundingClientRect();
 
