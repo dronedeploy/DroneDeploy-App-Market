@@ -24,7 +24,6 @@
     const sliderPrototype = Object.create(HTMLElement.prototype)
     sliderPrototype.createdCallback = function() {
       this.root_ = this.attachShadow({ mode: 'open' })
-      console.log('created', this, this.root_)
       this.root_.innerHTML = `
         <style>
         .rkmd-slider {
