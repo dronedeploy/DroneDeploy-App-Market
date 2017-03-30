@@ -333,8 +333,8 @@
 
 
         function updateSliderOnMouseMove(e){
+          var {width: slider_width, left: slider_offset } = node.getBoundingClientRect();
           var slider_new_width = e.pageX - slider_offset;
-
           if(slider_new_width <= slider_width && !(slider_new_width < '0')) {
             slider_move(dispatchNode, node, slider_new_width, slider_width);
           }
@@ -353,6 +353,7 @@
           return false;
         }
 
+        var {width: slider_width, left: slider_offset } = node.getBoundingClientRect();
         var slider_new_width = e.pageX - slider_offset;
         if(slider_new_width <= slider_width && !(slider_new_width < '0')) {
           slider_move(dispatchNode, node, slider_new_width, slider_width);
