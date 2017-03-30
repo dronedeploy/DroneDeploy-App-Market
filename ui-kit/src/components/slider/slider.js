@@ -43,7 +43,7 @@
           display: block;
           position: relative;
           width: 100%;
-          height: 4px;
+          height: 2px;
           background-color: #bebebe;
         }
         .rkmd-slider input[type="range"] + .slider .slider-fill {
