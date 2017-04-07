@@ -89,7 +89,7 @@
                     flex-direction: row;
                     -ms-flex-wrap: wrap;
                     flex-wrap: wrap;
-                    margin: 0 20px;
+                    margin: 0 10px;
                     /*Added space in between by default custom G*/
                     justify-content: space-between;
                 }
@@ -102,7 +102,6 @@
                     -ms-flex: 0 0 auto;
                     -webkit-box-flex: 0;
                     flex: 0 0 auto;
-                    padding-right: 4px;
                     padding-left: 4px;
                 }
 
@@ -139,6 +138,12 @@
                     display: flex;
                     justify-content: flex-end;
                 }
+                #expand-section{
+                    display: none;
+                    margin: 0px 10px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                }
             </style>
             <div class="container">
                 <div class="row" id="expand-target">
@@ -153,7 +158,7 @@
                     </div>
                 </div>
 
-                <div id="expand-section" style="display: none;">
+                <div id="expand-section" style="">
                     <slot></slot>
                 </div>
             </div>
