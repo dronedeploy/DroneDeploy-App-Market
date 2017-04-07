@@ -197,6 +197,6 @@
             })
         }
 
-        document.registerElement('dd-app', { prototype: containerPrototype })
+        document.registerElement('dd-container', { prototype: containerPrototype })
     }
 })()
