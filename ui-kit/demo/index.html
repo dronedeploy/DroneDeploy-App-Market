@@ -4,23 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script type="text/javascript" src="components/loading/loading.js"></script>
-    <script type="text/javascript" src="components/chip/chip.js"></script>
-    <script type="text/javascript" src="components/info/info.js"></script>
-    <script type="text/javascript" src="components/toggle/toggle.js"></script>
-    <script type="text/javascript" src="components/input/input.js"></script>
-    <script type="text/javascript" src="components/radio/radio.js"></script>
-    <script type="text/javascript" src="components/dropdown/dropdown.js"></script>
-    <script type="text/javascript" src="components/slider/slider.js"></script>
-    <style type="text/css">
-        .extra-room {
-            margin-bottom: 50vh;
+    <link rel="stylesheet" href="../dist/styles.css">
+    <script type="text/javascript" src="../dist/container.js"></script>
+    <script type="text/javascript" src="../dist/loading.js"></script>
+    <script type="text/javascript" src="../dist/chip.js"></script>
+    <script type="text/javascript" src="../dist/info.js"></script>
+    <script type="text/javascript" src="../dist/toggle.js"></script>
+    <script type="text/javascript" src="../dist/input.js"></script>
+    <script type="text/javascript" src="../dist/radio.js"></script>
+    <script type="text/javascript" src="../dist/dropdown.js"></script>
+    <script type="text/javascript" src="../dist/slider.js"></script></head>
+    <style>
+        body{
+            margin: 20px;
         }
     </style>
-</head>
-
 <body>
 
+    <h2>Expand Container:</h2>
+    <div style="width: 310px;">
+        <dd-container title="DroneDeploy" logo="./dronedeploy-logo.png">
+            <p>This UI component makes it easy to create a collapsable app for the DroneDeploy app market.</p>
+        </dd-container>
+    </div>
 
     <h2>Loading:</h2>
     <dd-loading></dd-loading>
@@ -58,7 +64,9 @@
     <dd-dropdown label="Resolution" defaultValue="Select an option" id="test-dropdown">0.4in/px,0.8in/px,2in/px,4in/px,8in/px,20in/px</dd-dropdown>
 
     <h2>Slider:</h2>
-    <dd-slider value="40"></dd-slider> <!-- slider from 0 - 100 -->
+    <div style="width: 300px;">
+        <dd-slider value="40"></dd-slider> <!-- slider from 0 - 100 -->
+    </div>
     <h3>Value: <span id="slider-value">40</span></h3>
     <script>
     document.querySelector('dd-slider').addEventListener('change', function(e){
@@ -70,7 +78,6 @@
     <br>
     <br>
     <br>
-
 </body>
 
 </html>
