@@ -89,7 +89,7 @@
                     flex-direction: row;
                     -ms-flex-wrap: wrap;
                     flex-wrap: wrap;
-                    margin: 0 10px;
+                    margin: 0 20px;
                     /*Added space in between by default custom G*/
                     justify-content: space-between;
                 }
@@ -103,6 +103,7 @@
                     -webkit-box-flex: 0;
                     flex: 0 0 auto;
                     padding-left: 4px;
+                    padding-right: 4px;
                 }
 
                 .col-1 {
@@ -140,7 +141,7 @@
                 }
                 #expand-section{
                     display: none;
-                    margin: 0px 10px;
+                    margin: 0px 20px;
                     padding-left: 4px;
                     padding-right: 4px;
                 }
