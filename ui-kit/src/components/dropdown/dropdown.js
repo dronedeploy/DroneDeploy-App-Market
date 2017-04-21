@@ -46,7 +46,6 @@
               .map(option => `<div class="option">${option}</div>`).join('')
             const selects = Array.from(this.querySelectorAll('option'))
                               .map(option => `<div class="${option.classList} option" data-value="${option.value}">${option.innerHTML}</div>`).join('')
-            console.log(selects)
             this.root_.innerHTML = `
         <style>
 
