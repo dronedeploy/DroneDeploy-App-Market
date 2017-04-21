@@ -40,7 +40,13 @@
             const label = this.getAttribute('label')
             this.value = this.getAttribute('defaultValue')
             this.root_ = this.attachShadow({ mode: 'open' })
-            const options = this.innerHTML.split(',').map(option => `<div class="option">${option.replace(' ', '')}</div>`).join('')
+            const options = this.innerHTML.split(',')
+              .map(option => option.trim())
+              .filter(option => option.length)
+              .map(option => `<div class="option">${option}</div>`).join('')
+            const selects = Array.from(this.querySelectorAll('option'))
+                              .map(option => `<div class="${option.classList} option" data-value="${option.value}">${option.innerHTML}</div>`).join('')
+            console.log(selects)
             this.root_.innerHTML = `
         <style>
 
@@ -154,7 +160,7 @@
           <br />
           <div class="dd-input" tabindex="0"><span class="dd-value">${this.value}</span><i class="icon icon-chevron-down"></i></div>
           <div class="hidden options-container">
-            ${options}
+            ${selects || options}
           </div>
         </div>
       `
@@ -166,6 +172,22 @@
             const ddSelect = this.root_.querySelector('.options-container')
             const ddValue = this.root_.querySelector('.dd-value')
             const options = Array.from(this.root_.querySelectorAll('.option'))
+
+            function bindOption(option) {
+              option.onclick = event => {
+                  options.forEach(option => option.classList.remove('active'))
+                  option.classList.add('active')
+                  ddSelect.classList.add('hidden')
+                  ddValue.innerHTML = this.value = event.target.innerHTML
+                  this.dispatchEvent(new CustomEvent('change'))
+              }
+            }
+
+            function createOptionsList(options) {
+              options.forEach(bindOption)
+            }
+
+            createOptionsList(options)
 
             ddInput.onfocus = function() {
                 this.classList.add('focused')
@@ -189,16 +211,7 @@
                 }
             }
 
-            options.forEach(option => option.onclick = event => {
-                options.forEach(option => option.classList.remove('active'))
-                option.classList.add('active')
-                ddSelect.classList.add('hidden')
-                ddValue.innerHTML = this.value = event.target.innerHTML
-                this.dispatchEvent(new CustomEvent('change'))
-            })
-
-            this.root_.querySelector('.options-container').onscroll = event => {
-                console.log(event.target)
+            ddSelect.onscroll = event => {
                 event.preventDefault()
                 event.returnValue = false
                 return false;
