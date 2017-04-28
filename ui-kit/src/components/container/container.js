@@ -26,6 +26,7 @@
             const title = this.getAttribute('title')
             const logo = this.getAttribute('logo')
             const alt = this.getAttribute('alt')
+            const content = this.innerHTML
             this.root_ = this.attachShadow({ 'mode': 'open' })
             this.root_.innerHTML = `
             <style>
@@ -160,7 +161,7 @@
                 </div>
 
                 <div id="expand-section" style="">
-                    <slot></slot>
+                    ${content}
                 </div>
             </div>
             <template id="up-arrow">
