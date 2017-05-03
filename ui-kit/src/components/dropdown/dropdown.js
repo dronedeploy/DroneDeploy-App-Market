@@ -41,11 +41,11 @@
             this.value = this.getAttribute('defaultValue')
             this.root_ = this.attachShadow({ mode: 'open' })
             const options = this.innerHTML.split(',')
-              .map(option => option.trim())
-              .filter(option => option.length)
-              .map(option => `<div class="option" data-value="${option}">${option}</div>`).join('')
+                .map(option => option.trim())
+                .filter(option => option.length)
+                .map(option => `<div class="option" data-value="${option}">${option}</div>`).join('')
             const selects = Array.from(this.querySelectorAll('option'))
-                              .map(option => `<div class="option ${option.classList}" data-value="${option.value}" ${option.id ? "id=" + option.id : '' }>${option.innerHTML}</div>`).join('')
+                .map(option => `<div class="option ${option.classList}" data-value="${option.value}" ${option.id ? "id=" + option.id : '' }>${option.innerHTML}</div>`).join('')
             this.root_.innerHTML = `
         <style>
 
@@ -76,8 +76,8 @@
         .options-container {
           font-family: Lato,sans-serif;
           box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
-          position: absolute;
-          top: 50%;
+          position: relative;
+          top: -50px;
           left: 0;
           width: calc(100% + 32px);
           background-color: white;
@@ -173,18 +173,18 @@
             const options = Array.from(this.root_.querySelectorAll('.option'))
 
             function bindOption(option, thisNode) {
-              option.onclick = event => {
-                  options.forEach(option => option.classList.remove('active'))
-                  option.classList.add('active')
-                  ddSelect.classList.add('hidden')
-                  ddValue.innerHTML = event.target.innerHTML
-                  thisNode.value = event.target.dataset.value || event.target.innerHTML
-                  thisNode.dispatchEvent(new CustomEvent('change'))
-              }
+                option.onclick = event => {
+                    options.forEach(option => option.classList.remove('active'))
+                    option.classList.add('active')
+                    ddSelect.classList.add('hidden')
+                    ddValue.innerHTML = event.target.innerHTML
+                    thisNode.value = event.target.dataset.value || event.target.innerHTML
+                    thisNode.dispatchEvent(new CustomEvent('change'))
+                }
             }
 
             function createOptionsList(options, thisNode) {
-              options.forEach(option => bindOption(option, thisNode))
+                options.forEach(option => bindOption(option, thisNode))
             }
 
             createOptionsList(options, this)
