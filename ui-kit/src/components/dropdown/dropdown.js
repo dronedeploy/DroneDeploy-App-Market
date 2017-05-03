@@ -38,14 +38,27 @@
                 document.querySelector('head').classList.add('dd-font')
             }
             const label = this.getAttribute('label')
-            this.value = this.getAttribute('defaultValue')
             this.root_ = this.attachShadow({ mode: 'open' })
-            const options = this.innerHTML.split(',')
-                .map(option => option.trim())
-                .filter(option => option.length)
-                .map(option => `<div class="option" data-value="${option}">${option}</div>`).join('')
-            const selects = Array.from(this.querySelectorAll('option'))
-                .map(option => `<div class="option ${option.classList}" data-value="${option.value}" ${option.id ? "id=" + option.id : '' }>${option.innerHTML}</div>`).join('')
+
+            let optionTags, options, selects;
+            optionTags = this.querySelectorAll('option')
+
+            // determine which api is being used:
+            if(optionTags.length) {
+              // we are using the <option> api
+              const optionsArray = Array.from(optionTags)
+              this.value = this.getAttribute('defaultValue')
+              optionsArray.forEach(option => option.value === this.value ? this.initialDisplay = option.innerHTML : '')
+              selects = optionsArray
+                  .map(option => `<div class="option ${option.value === this.value ? 'active' : ''} ${option.classList}" data-value="${option.value}" ${option.id ? "id=" + option.id : '' }>${option.innerHTML}</div>`).join('')
+            } else {
+              // we are using CSV api
+              this.value = this.initialDisplay = this.getAttribute('defaultValue')
+              options = this.innerHTML.split(',')
+                  .map(option => option.trim())
+                  .filter(option => option.length)
+                  .map(option => `<div class="option" data-value="${option}">${option}</div>`).join('')
+            }
             this.root_.innerHTML = `
         <style>
 
@@ -153,15 +166,17 @@
           width: 100vw;
           position: absolute;
         }
+
       </style>
         <div class="wrapper">
           <label>${label}</label>
           <br />
-          <div class="dd-input" tabindex="0"><span class="dd-value">${this.value}</span><i class="icon icon-chevron-down"></i></div>
+          <div class="dd-input" tabindex="0"><span class="dd-value">${this.initialDisplay}</span><i class="icon icon-chevron-down"></i></div>
           <div class="hidden options-container">
             ${selects || options}
           </div>
         </div>
+        <div class="cancel-div"></div>
       `
         }
 
@@ -216,6 +231,7 @@
                 event.returnValue = false
                 return false;
             }
+
             this.dispatchEvent(new CustomEvent('load'))
         }
 
