@@ -3,42 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Feel free to download and modify -->
+  <link rel="stylesheet" href="https://s3.amazonaws.com/drone-deploy-plugins/templates/uikit/v1/styles.css">
+
+  <!-- View all of the dronedeploy UI Components here https://dronedeploy.gitbooks.io/dronedeploy-apps/content/styles/dronedeploy-ui-kit.html -->
+  <script type="text/javascript" src="https://s3.amazonaws.com/drone-deploy-plugins/templates/uikit/v1/container.js"></script>
 </head>
 <body>
 
-  <div class="container expand-container">
-    <div class="row expand-row">
-      <div class="col-3">
-        <span class="lead vert-center"><img class="logo" src="world-logo.svg" alt="autodesk"> Hello World App</span>
-      </div>
-      <div class="col-1 right">
-        <i>
-          <img src="https://s3.amazonaws.com/drone-deploy-plugins/templates/login-example-imgs/arrow-down.svg" alt="collapse" class="expand-arrow">
-        </i>
+  <dd-container title="DroneDeploy" logo="./logo.png">
+    <div class="row">
+      <div class="input-field col-4">
+        <input type="text" class="validate">
+        <label for="first_name">Username</label>
       </div>
     </div>
-
-    <div class="expand-section" style="display: none;">
-      <div class="row">
-        <div class="input-field col-4">
-          <input type="text" class="validate">
-          <label for="first_name">Username</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col-4">
-          <input type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <button>Log In</button>
-        </div>
+    <div class="row">
+      <div class="input-field col-4">
+        <input type="password" class="validate">
+        <label for="password">Password</label>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-4">
+        <button>Log In</button>
+      </div>
+    </div>
+  </dd-container>
 
   <script src="script.js"></script>
 </body>
