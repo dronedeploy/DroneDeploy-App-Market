@@ -10,7 +10,7 @@ Important links:
 
 ### Where to Submit a Bug
 
-Use [this repo's issues tab](https://github.com/dronedeploy/dronedeploy-apps/issues) to submit a bug report related to the DroneDeploy App APIs from the perspective of a developer using that API.
+Use [this repo's issues tab](https://github.com/dronedeploy/DroneDeploy-App-Market/issues) to submit a bug report related to the DroneDeploy App APIs from the perspective of a developer using that API.
 
 - For bugs related to a specific app, [use the feedback form on that app's page in the app market](https://www.dronedeploy.com/app2/applications)
 - For bugs related to the DroneDeploy web app, iOS app, or Android app that are not related to the App Market platform, use the [DroneDeploy Forums](http://forum.dronedeploy.com/c/bug-reports-feedback)
